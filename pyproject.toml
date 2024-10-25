@@ -1,7 +1,14 @@
+[tool.black]
+include='(mypkg|tests).*\.py$'
+
+[tool.isort]
+profile = "black"
+src_paths = ["mypkg", "tests"]
+
+[tool.mypy]
+mypy_path = ["mypkg", "tests"]
+files = ["mypkg", "tests"]
+
 [tool.pytest.ini_options]
-pythonpath = [
-  "src"
-]
-testpaths = [
-  "tests"
-]
+pythonpath = ["mypkg"]
+testpaths = ["tests"]
