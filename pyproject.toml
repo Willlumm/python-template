@@ -10,5 +10,5 @@ mypy_path = ["mypkg", "tests"]
 files = ["mypkg", "tests"]
 
 [tool.pytest.ini_options]
-pythonpath = ["mypkg"]
+pythonpath = ["."]
 testpaths = ["tests"]
