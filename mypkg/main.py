@@ -1,5 +1,11 @@
 from mypkg import a
 from mypkg.stuff import b
 
-a.hello()
-b.hello()
+
+def main() -> None:
+    a.hello()
+    b.hello()
+
+
+if __name__ == "__main__":
+    main()  # pragma: no cover
