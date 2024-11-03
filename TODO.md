@@ -6,6 +6,5 @@ Linting
 
 Releasing
 - commitizen
-- genbadge
 - pytest-cov
 - snyk
