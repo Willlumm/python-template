@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-  echo "running isort"
+  echo "running isort..."
   python -m isort .
-  echo "running black"
+  echo
+  echo "running black..."
   python -m black .
-  echo "running mypy"
+  echo
+  echo "running mypy..."
   python -m mypy
