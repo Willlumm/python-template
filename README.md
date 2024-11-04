@@ -10,13 +10,33 @@ A template for Python projects.
 
 ## Installation
 
+1. To use this template, click "Use this template" in the top right and select "Create a new repository".
+1. Clone your newly created repository.
+1. Run `pip install -r dev-requirements` to install the libraries for development.
+
 ## Usage
+
+### Testing
+
+For tests and test coverage, run `pytest`. 
+
+### Autoformatting and Linting
+
+For autoformatting and linting, run `./scripts/lint.sh`. This includes:
+- [black](https://github.com/psf/black)
+- [flake8](https://github.com/PyCQA/flake8)
+- [isort](https://github.com/PyCQA/isort)
+- [mypy](https://github.com/python/mypy)
+
+### Badge Updating
+
+To update the badges at the top of this README, run `./scripts/update-badges`. This includes:
+- Number of tests
+- Test coverage
 
 ## Roadmap
 
-## Contributing
-
-## Acknowledgement
+See [TODO](TODO.md) for an idea of what might be added in the future.
 
 ## License
 
