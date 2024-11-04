@@ -18,5 +18,6 @@ mypy_path = ["mypkg", "tests"]
 files = ["mypkg", "tests"]
 
 [tool.pytest.ini_options]
+addopts = "--cov=mypkg --cov-report=term-missing"
 pythonpath = ["."]
 testpaths = ["tests"]
