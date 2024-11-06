@@ -21,12 +21,16 @@ A template for Python projects.
 
 For tests and test coverage, run `pytest`. 
 
-### Autoformatting and Linting
+### Autoformatting
 
-For autoformatting and linting, run `./scripts/lint.sh`. This includes:
+For autoformatting and linting, run `./scripts/format.sh`. This includes:
 - [black](https://github.com/psf/black)
-- [flake8](https://github.com/PyCQA/flake8)
 - [isort](https://github.com/PyCQA/isort)
+
+
+### Linting
+For autoformatting and linting, run `./scripts/lint.sh`. This includes:
+- [flake8](https://github.com/PyCQA/flake8)
 - [mypy](https://github.com/python/mypy)
 
 ### Badge Updating

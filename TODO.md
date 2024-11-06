@@ -27,5 +27,4 @@ These are all just ideas, nothing is guaranteed to be added.
 - Snyk
 
 ## Tests
-- Codecov
 - Coveralls
