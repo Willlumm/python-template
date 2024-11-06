@@ -7,6 +7,7 @@ A template for Python projects.
 [![mypy: checked](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 ![Tests Status](./reports/tests/badge.svg?dummy=8484744)
 ![Coverage Status](./reports/coverage/badge.svg?dummy=8484744)
+[![codecov](https://codecov.io/github/Willlumm/python-template/graph/badge.svg?token=M18Z3P04K4)](https://codecov.io/github/Willlumm/python-template)
 
 ## Installation
 
