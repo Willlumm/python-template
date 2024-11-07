@@ -1,5 +1,5 @@
 from mypkg.stuff import b
 
 
-def test_b_hello():
-    assert b.hello()
+def test_b_hello() -> None:
+    assert b.hello() == "Hello from `stuff/b.py`!"

@@ -1,3 +1,2 @@
-def hello():
-    print("Hello from `stuff/b.py`!")
-    return True
+def hello() -> str:
+    return "Hello from `stuff/b.py`!"
