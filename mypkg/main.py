@@ -3,8 +3,8 @@ from mypkg.stuff import b
 
 
 def main() -> None:
-    a.hello()
-    b.hello()
+    print(a.hello())
+    print(b.hello())
 
 
 if __name__ == "__main__":

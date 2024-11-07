@@ -16,6 +16,7 @@ src_paths = ["mypkg", "tests"]
 [tool.mypy]
 mypy_path = ["mypkg", "tests"]
 files = ["mypkg", "tests"]
+strict = "true"
 
 [tool.pytest.ini_options]
 addopts = "--cov=mypkg --cov-report=term-missing"
