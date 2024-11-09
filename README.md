@@ -32,7 +32,7 @@ For tests and test coverage, run `pytest`.
 
 ### Badge Updating
 
-[!NOTE]
+> **Note:**
 Work in progress, not currently working in CD pipeline.
 
 To update the badges at the top of this README, run `./scripts/update-badges`. This includes:
