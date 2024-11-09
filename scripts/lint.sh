@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 CHECK_ONLY="true"
-ISORT_ARGS=()
-BLACK_ARGS=()
+RUFF_FORMAT_ARGS=()
+RUFF_LINT_ARGS=()
 
 help() {
     echo "Usage: $0 [OPTIONS]"
@@ -31,17 +31,21 @@ handle_options() {
 
 handle_options "$@"
 
+echo ""
 if [ "$CHECK_ONLY" = "true" ]; then
-    ISORT_ARGS+="--check"
-    BLACK_ARGS+="--check"
+    RUFF_FORMAT_ARGS+=("--check")
+    echo "checking..."
+else
+    RUFF_LINT_ARGS+=("--fix")
+    echo "fixing..."
 fi
 
-echo -e "\nrunning isort..."
-python -m isort . ${ISORT_ARGS[@]}
-echo -e "\nrunning black..."
-python -m black . ${BLACK_ARGS[@]}
-echo -e "\nrunning flake8..."
-python -m flake8 mypkg tests
+echo ""
+echo -e "running ruff..."
+echo ""
+ruff check ${RUFF_LINT_ARGS[@]}
+ruff format ${RUFF_FORMAT_ARGS[@]}
+echo ""
 echo -e "\nrunning mypy..."
-python -m mypy
+mypy
 echo ""

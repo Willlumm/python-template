@@ -1,0 +1,33 @@
+name: cd
+
+on: 
+  push:
+    branches:
+      main
+
+jobs:
+  test:
+    name: upload-test-coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: install-python
+        uses: actions/setup-python@v4
+        with:
+          python-version-file: .python-version
+
+      - name: install-uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: install-dependencies
+        run: uv sync --group test
+
+      - name: run-tests
+        run: uv run pytest --cov-report=xml
+
+      - name: upload-test-coverage
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

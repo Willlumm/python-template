@@ -2,38 +2,38 @@
 
 A template for Python projects.
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![mypy: checked](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
-![Tests Status](./reports/tests/badge.svg?dummy=8484744)
-![Coverage Status](./reports/coverage/badge.svg?dummy=8484744)
+[![Actions status](https://github.com/Willlumm/python-template/workflows/CI/badge.svg)](https://github.com/Willlumm/python-template/actions)
 [![codecov](https://codecov.io/github/Willlumm/python-template/graph/badge.svg?token=M18Z3P04K4)](https://codecov.io/github/Willlumm/python-template)
+[![image](https://img.shields.io/pypi/l/ruff.svg)](https://github.com/astral-sh/ruff/blob/main/LICENSE)
+<!-- ![Tests Status](./reports/tests/badge.svg?dummy=8484744) -->
+<!-- ![Coverage Status](./reports/coverage/badge.svg?dummy=8484744) -->
 
 ## Installation
 
 1. To use this template, click "Use this template" in the top right and select "Create a new repository".
 1. Clone your newly created repository.
-1. Run `pip install -r dev-requirements` to install the libraries for development.
+1. Run `pip install uv` to install the [uv](https://github.com/astral-sh/uv) package and project manager
+1. Run `uv sync` to install the packages.
 
 ## Usage
+
+### Autoformatting and linting
+
+For autoformatting and linting, run `./scripts/format.sh`. This includes:
+- [Ruff](https://github.com/astral-sh/ruff)
+- [mypy](https://github.com/python/mypy)
 
 ### Testing
 
 For tests and test coverage, run `pytest`. 
 
-### Autoformatting
-
-For autoformatting and linting, run `./scripts/format.sh`. This includes:
-- [black](https://github.com/psf/black)
-- [isort](https://github.com/PyCQA/isort)
-
-
-### Linting
-For autoformatting and linting, run `./scripts/lint.sh`. This includes:
-- [flake8](https://github.com/PyCQA/flake8)
-- [mypy](https://github.com/python/mypy)
-
 ### Badge Updating
+
+[!NOTE]
+Work in progress, not currently working in CD pipeline.
 
 To update the badges at the top of this README, run `./scripts/update-badges`. This includes:
 - Number of tests
