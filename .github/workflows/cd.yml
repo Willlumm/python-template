@@ -1,17 +1,28 @@
 name: cd
 
 on: 
-  push:
-    branches:
-      main
+  workflow_dispatch
 
+env:
+  BUMP_USERNAME: Mr Bump
+  BUMP_EMAIL: bump@users.noreply.github.com
+  COVERAGE_BADGE: reports/coverage/badge.svg
+  COVERAGE_RESULTS: reports/coverage/results.xml
+  TESTS_BADGE: reports/tests/badge.svg
+  TESTS_RESULTS: reports/tests/results.xml
+  
 jobs:
-  test:
-    name: upload-test-coverage
+  cd:
+    name: bump
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: install-python
         uses: actions/setup-python@v4
@@ -22,12 +33,25 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: install-dependencies
-        run: uv sync --group test
+        run: uv sync --group release
 
       - name: run-tests
-        run: uv run pytest --cov-report=xml
+        run: |
+          uv run pytest --junitxml="$TESTS_RESULTS"
+          uv run coverage xml -o "$COVERAGE_RESULTS"
 
-      - name: upload-test-coverage
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: generate-badges
+        run: |
+          uv run genbadge tests --input-file "$TESTS_RESULTS" --output-file "$TESTS_BADGE"
+          uv run genbadge coverage --input-file "$COVERAGE_RESULTS" --output-file "$COVERAGE_BADGE"
+
+      - name: set-git-identity
+        run: |
+          git config user.name "$BUMP_USERNAME"
+          git config user.email "$BUMP_EMAIL"
+
+      - name: bump-version
+        run: uv run cz bump
+
+      - name: push-to-main
+        run: git push --follow-tags
