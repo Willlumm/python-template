@@ -1,6 +1,6 @@
 [project]
 name = "python-template"
-version = "0.1.0"
+version = "0.0.0"
 description = "A template for Python projects"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -15,7 +15,19 @@ test = [
     "pytest>=8.3.3",
     "pytest-cov>=6.0.0",
 ]
+release = [
+    {include-group = "test"},
+    "commitizen>=3.30.1",
+    "genbadge[coverage,tests]>=1.1.1",
+]
 dev = [{include-group = "lint"}, {include-group = "test"}]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "semver2"
+version_provider = "pep621"
+update_changelog_on_bump = true
 
 [tool.coverage.report]
 exclude_also = [
