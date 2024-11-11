@@ -53,5 +53,8 @@ jobs:
       - name: bump-version
         run: uv run cz bump
 
-      - name: push-to-main
-        run: git push --follow-tags
+      - name: open-pull-request
+        run: |
+          git checkout -b bump-version
+          git push --follow-tags
+          gh pr create -B main -H bump-version
