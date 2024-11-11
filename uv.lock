@@ -326,7 +326,7 @@ wheels = [
 
 [[package]]
 name = "python-template"
-version = "0.1.0"
+version = "0.0.0"
 source = { virtual = "." }
 
 [package.dev-dependencies]
@@ -343,6 +343,8 @@ lint = [
 release = [
     { name = "commitizen" },
     { name = "genbadge", extra = ["coverage", "tests"] },
+    { name = "pytest" },
+    { name = "pytest-cov" },
 ]
 test = [
     { name = "pytest" },
@@ -365,6 +367,8 @@ lint = [
 release = [
     { name = "commitizen", specifier = ">=3.30.1" },
     { name = "genbadge", extras = ["coverage", "tests"], specifier = ">=1.1.1" },
+    { name = "pytest", specifier = ">=8.3.3" },
+    { name = "pytest-cov", specifier = ">=6.0.0" },
 ]
 test = [
     { name = "pytest", specifier = ">=8.3.3" },
