@@ -56,5 +56,5 @@ jobs:
       - name: open-pull-request
         run: |
           git checkout -b bump-version
-          git push --follow-tags
+          git push --set-upstream origin bump-version --follow-tags
           gh pr create -B main -H bump-version
