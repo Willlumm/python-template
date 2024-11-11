@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -57,5 +58,5 @@ jobs:
       - name: open-pull-request
         run: |
           git checkout -b bump-version
-          git push --set-upstream origin bump-version --follow-tags
+          git push --follow-tags --force --set-upstream origin bump-version
           gh pr create --base main --head bump-version --fill
