@@ -31,7 +31,7 @@ For tests and test coverage, run `pytest`.
 
 ### Continuous Integration
 
-The CI action runs when a pull request opens an makes the following checks:
+The CI action runs when a pull request opens and makes the following checks:
 - Formatting and linting
 - Tests
 
