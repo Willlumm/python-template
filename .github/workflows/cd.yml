@@ -34,7 +34,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: install-dependencies
-        run: uv sync --group release
+        run: uv sync --group bump
 
       - name: run-tests
         run: |
@@ -58,4 +58,4 @@ jobs:
         run: |
           git checkout -b bump-version
           git push --set-upstream origin bump-version --follow-tags
-          gh pr create -B main -H bump-version
+          gh pr create --base main --head bump-version --fill
