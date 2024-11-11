@@ -8,6 +8,7 @@ env:
   BUMP_EMAIL: bump@users.noreply.github.com
   COVERAGE_BADGE: reports/coverage/badge.svg
   COVERAGE_RESULTS: reports/coverage/results.xml
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   TESTS_BADGE: reports/tests/badge.svg
   TESTS_RESULTS: reports/tests/results.xml
   
