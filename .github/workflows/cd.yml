@@ -5,7 +5,7 @@ on:
 
 env:
   BUMP_USERNAME: Mr Bump
-  BUMP_EMAIL: bump@users.noreply.github.com
+  BUMP_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
   COVERAGE_BADGE: reports/coverage/badge.svg
   COVERAGE_RESULTS: reports/coverage/results.xml
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -13,7 +13,7 @@ env:
   TESTS_RESULTS: reports/tests/results.xml
   
 jobs:
-  cd:
+  bump:
     name: bump
     runs-on: ubuntu-latest
     permissions:
@@ -35,7 +35,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: install-dependencies
-        run: uv sync --group bump
+        run: uv sync --frozen --group bump
 
       - name: run-tests
         run: |
@@ -53,7 +53,7 @@ jobs:
           git config user.email "$BUMP_EMAIL"
 
       - name: bump-version
-        run: uv run cz bump
+        run: uv run cz bump --annotated-tag --yes
 
       - name: open-pull-request
         run: |

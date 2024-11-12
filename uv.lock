@@ -330,6 +330,12 @@ version = "0.0.0"
 source = { virtual = "." }
 
 [package.dev-dependencies]
+bump = [
+    { name = "commitizen" },
+    { name = "genbadge", extra = ["coverage", "tests"] },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+]
 dev = [
     { name = "mypy" },
     { name = "pytest" },
@@ -339,12 +345,6 @@ dev = [
 lint = [
     { name = "mypy" },
     { name = "ruff" },
-]
-release = [
-    { name = "commitizen" },
-    { name = "genbadge", extra = ["coverage", "tests"] },
-    { name = "pytest" },
-    { name = "pytest-cov" },
 ]
 test = [
     { name = "pytest" },
@@ -354,6 +354,12 @@ test = [
 [package.metadata]
 
 [package.metadata.requires-dev]
+bump = [
+    { name = "commitizen", specifier = ">=3.30.1" },
+    { name = "genbadge", extras = ["coverage", "tests"], specifier = ">=1.1.1" },
+    { name = "pytest", specifier = ">=8.3.3" },
+    { name = "pytest-cov", specifier = ">=6.0.0" },
+]
 dev = [
     { name = "mypy", specifier = ">=1.13.0" },
     { name = "pytest", specifier = ">=8.3.3" },
@@ -363,12 +369,6 @@ dev = [
 lint = [
     { name = "mypy", specifier = ">=1.13.0" },
     { name = "ruff", specifier = ">=0.7.3" },
-]
-release = [
-    { name = "commitizen", specifier = ">=3.30.1" },
-    { name = "genbadge", extras = ["coverage", "tests"], specifier = ">=1.1.1" },
-    { name = "pytest", specifier = ">=8.3.3" },
-    { name = "pytest-cov", specifier = ">=6.0.0" },
 ]
 test = [
     { name = "pytest", specifier = ">=8.3.3" },

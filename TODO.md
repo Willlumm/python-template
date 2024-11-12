@@ -3,13 +3,11 @@
 These are all just ideas, nothing is guaranteed to be added.
 
 ## CI/CD
-- Semver
 - Pre-commit
-- Badge updates
+- Allow bump PR to trigger CI
 
 ## Documentation
 - Contributing
 - GitHub Pages
-
-## Tests
-- Coveralls
+    - Publish test results
+    - Publish documentation
