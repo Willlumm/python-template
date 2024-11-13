@@ -1,6 +1,12 @@
 name: ci
 
-on: [pull_request, workflow_dispatch]
+on:
+  pull_request:
+    types:
+      - auto_merge_enabled  # allow bump PR CI to run when automerge enabled
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   lint:
