@@ -7,7 +7,7 @@ A template for Python projects.
 [![mypy: checked](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 ![Tests Status](./reports/tests/badge.svg?dummy=8484744)
 ![Coverage Status](./reports/coverage/badge.svg?dummy=8484744)
-[![ci](https://github.com/Willlumm/python-template/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Willlumm/python-template/actions/workflows/ci.yml)
+[![ci](https://github.com/Willlumm/python-template/actions/workflows/ci.yml/badge.svg)](https://github.com/Willlumm/python-template/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
