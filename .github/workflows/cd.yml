@@ -58,5 +58,16 @@ jobs:
       - name: open-pull-request
         run: |
           git checkout -b bump-version
-          git push --follow-tags --force --set-upstream origin bump-version
+          git push --follow-tags --set-upstream origin bump-version
           gh pr create --base main --head bump-version --fill
+
+      - name: trigger-ci  # Need to trigger CI using repository dispatch because workflows using the GITHUB_TOKEN cannot trigger other workflows.
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'ci.yml',
+              ref: 'bump-version',
+            })

@@ -1,7 +1,8 @@
 name: ci
 
 on: 
-  pull_request
+  pull_request:
+  repository_dispatch: [ci_trigger]
 
 jobs:
   lint:
