@@ -14,8 +14,8 @@ bump = [
 ]
 docs = [
     {include-group = "test"},
-    "genbadge>=1.1.1",
     "mkdocs>=1.6.1",
+    "genbadge[coverage,tests]>=1.1.1",
 ]
 lint = [
     "mypy>=1.13.0",
@@ -31,11 +31,12 @@ dev = [
 ]
 
 [tool.commitizen]
+changelog_file = "docs/CHANGELOG.md"
 name = "cz_conventional_commits"
 tag_format = "$version"
-version_scheme = "semver2"
-version_provider = "pep621"
 update_changelog_on_bump = true
+version_provider = "pep621"
+version_scheme = "semver2"
 
 [tool.coverage.report]
 exclude_also = [
@@ -48,7 +49,7 @@ branch = true
 [tool.mypy]
 mypy_path = ["mypkg", "tests"]
 files = ["mypkg", "tests"]
-strict = "true"
+strict = true
 
 [tool.pytest.ini_options]
 addopts = "--cov=mypkg --cov-report=term-missing"
@@ -61,16 +62,15 @@ target-version = "py313"
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-    "COM812",   # Ignore absence of trailing commas, causes conflicts with formatter
-    "D",        # Ignore docstring rules
-    "ISC001",   # Ignore implicit string concatenation, causes conflicts with formatter
-    "T20"       # Ignore print rules
+    "COM812",           # Ignore absence of trailing commas, causes conflicts with formatter
+    "D",                # Ignore docstring rules
+    "ISC001",           # Ignore implicit string concatenation, causes conflicts with formatter
+    "T20"               # Ignore print rules
 ]
 fixable = ["ALL"]
 
 [tool.ruff.lint.per-file-ignores]
-# Ignore asserts in tests
-"tests/*" = ["S101"]
+"tests/*" = ["S101"]    # Ignore asserts in tests
 
 [tool.uv]
-default-groups = [] # Only install project dependencies by default
+default-groups = []     # Only install project dependencies by default
