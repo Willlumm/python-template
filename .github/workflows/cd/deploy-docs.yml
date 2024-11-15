@@ -30,7 +30,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: install-dependencies
-        run: uv sync --frozen --group bump
+        run: uv sync --frozen --group docs
 
       - name: run-tests
         run: |
