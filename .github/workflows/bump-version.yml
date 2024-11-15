@@ -30,7 +30,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: install-dependencies
-        run: uv sync --frozen --group docs
+        run: uv sync --frozen --group bump
 
       - name: set-git-identity
         run: |
