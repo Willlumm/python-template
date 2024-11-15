@@ -5,12 +5,8 @@ on: workflow_dispatch
 env:
   BUMP_USERNAME: Mr Bump
   BUMP_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-  COVERAGE_BADGE: reports/coverage/badge.svg
-  COVERAGE_RESULTS: reports/coverage/results.xml
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  TESTS_BADGE: reports/tests/badge.svg
-  TESTS_RESULTS: reports/tests/results.xml
-  
+
 jobs:
   bump:
     name: bump
@@ -25,26 +21,11 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: install-python
-        uses: actions/setup-python@v4
-        with:
-          python-version-file: .python-version
-
       - name: install-uv
         uses: astral-sh/setup-uv@v3
 
       - name: install-dependencies
         run: uv sync --frozen --group bump
-
-      - name: run-tests
-        run: |
-          uv run pytest --junitxml="$TESTS_RESULTS"
-          uv run coverage xml -o "$COVERAGE_RESULTS"
-
-      - name: generate-badges
-        run: |
-          uv run genbadge tests --input-file "$TESTS_RESULTS" --output-file "$TESTS_BADGE"
-          uv run genbadge coverage --input-file "$COVERAGE_RESULTS" --output-file "$COVERAGE_BADGE"
 
       - name: set-git-identity
         run: |
@@ -59,4 +40,3 @@ jobs:
           git checkout -b bump-version
           git push --follow-tags --set-upstream origin bump-version
           gh pr create --base main --head bump-version --fill
-
