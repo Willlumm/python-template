@@ -123,15 +123,6 @@ wheels = [
 ]
 
 [[package]]
-name = "defusedxml"
-version = "0.7.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/0f/d5/c66da9b79e5bdb124974bfe172b4daf3c984ebd9c2a06e2b8a4dc7331c72/defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69", size = 75520 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl", hash = "sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61", size = 25604 },
-]
-
-[[package]]
 name = "genbadge"
 version = "1.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -144,14 +135,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/8f/fe/aa88fb4cb7af92ad13663027c42c208e7cf99b49ee2b268f0a5ac52d26c6/genbadge-1.1.1.tar.gz", hash = "sha256:12cdaaacbc9e0ea3164bf580cfb87ec61ff17ae0728f09a7f0102f8ab3112f4c", size = 138463 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3a/46/ebb323793f294062e113847a46a114f30a28bea1dfcee453cfd72f10daf5/genbadge-1.1.1-py2.py3-none-any.whl", hash = "sha256:c8b67ccdad2867434cdc0be7c4bd3f6af6003c466d8ff5013b8b5842ca8730de", size = 100759 },
-]
-
-[package.optional-dependencies]
-coverage = [
-    { name = "defusedxml" },
-]
-tests = [
-    { name = "defusedxml" },
 ]
 
 [[package]]
@@ -459,16 +442,18 @@ dependencies = [
 [package.dev-dependencies]
 bump = [
     { name = "commitizen" },
-    { name = "genbadge", extra = ["coverage", "tests"] },
-    { name = "mkdocs" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
 ]
 dev = [
     { name = "mypy" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "ruff" },
+]
+docs = [
+    { name = "genbadge" },
+    { name = "mkdocs" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
 ]
 lint = [
     { name = "mypy" },
@@ -483,18 +468,18 @@ test = [
 requires-dist = [{ name = "pytest-html", specifier = ">=4.1.1" }]
 
 [package.metadata.requires-dev]
-bump = [
-    { name = "commitizen", specifier = ">=3.30.1" },
-    { name = "genbadge", extras = ["coverage", "tests"], specifier = ">=1.1.1" },
-    { name = "mkdocs", specifier = ">=1.6.1" },
-    { name = "pytest", specifier = ">=8.3.3" },
-    { name = "pytest-cov", specifier = ">=6.0.0" },
-]
+bump = [{ name = "commitizen", specifier = ">=3.30.1" }]
 dev = [
     { name = "mypy", specifier = ">=1.13.0" },
     { name = "pytest", specifier = ">=8.3.3" },
     { name = "pytest-cov", specifier = ">=6.0.0" },
     { name = "ruff", specifier = ">=0.7.3" },
+]
+docs = [
+    { name = "genbadge", specifier = ">=1.1.1" },
+    { name = "mkdocs", specifier = ">=1.6.1" },
+    { name = "pytest", specifier = ">=8.3.3" },
+    { name = "pytest-cov", specifier = ">=6.0.0" },
 ]
 lint = [
     { name = "mypy", specifier = ">=1.13.0" },

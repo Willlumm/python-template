@@ -12,6 +12,11 @@ dependencies = [
 bump = [
     "commitizen>=3.30.1",
 ]
+docs = [
+    {include-group = "test"},
+    "genbadge>=1.1.1",
+    "mkdocs>=1.6.1",
+]
 lint = [
     "mypy>=1.13.0",
     "ruff>=0.7.3",

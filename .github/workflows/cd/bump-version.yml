@@ -1,4 +1,4 @@
-name: cd
+name: bump-version
 
 on: workflow_dispatch
 
@@ -9,7 +9,7 @@ env:
 
 jobs:
   bump:
-    name: bump
+    name: bump-version
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,11 +21,16 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: install-python
+        uses: actions/setup-python@v4
+        with:
+          python-version-file: .python-version
+
       - name: install-uv
         uses: astral-sh/setup-uv@v3
 
       - name: install-dependencies
-        run: uv sync --frozen --group bump
+        run: uv sync --frozen --group docs
 
       - name: set-git-identity
         run: |
