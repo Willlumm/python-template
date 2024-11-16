@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    if: startsWith(github.event.ref, 'refs/tags/v')
+    if: github.ref_type == 'tag'
     steps:
       - name: checkout
         uses: actions/checkout@v4
