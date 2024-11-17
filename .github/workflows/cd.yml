@@ -21,6 +21,7 @@ jobs:
           git config user.name "${{ vars.BUMP_APP_USER_NAME }}"
           git config user.email "${{ vars.BUMP_APP_USER_EMAIL }}"
           git checkout main
+          uv sync --frozen --group bump
           uv run cz bump --annotated-tag --yes
           git push --follow-tags
   docs:
@@ -48,6 +49,7 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
       - uses: astral-sh/setup-uv@v3
       - run: |
+          uv sync --frozen --group docs
           uv run pytest --junitxml="$TESTS_XML" --html="$TESTS_HTML"
           uv run coverage xml -o "$COVERAGE_XML"
           uv run coverage html --directory "$COVERAGE_HTML"
