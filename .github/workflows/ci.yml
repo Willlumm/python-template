@@ -1,12 +1,6 @@
 name: ci
 
-on:
-  pull_request:
-    types:
-      - auto_merge_enabled  # allow bump PR CI to run when automerge enabled
-      - opened
-      - reopened
-      - synchronize
+on: pull_request
 
 jobs:
   lint:
@@ -16,19 +10,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: install-python
-        uses: actions/setup-python@v4
-        with:
-          python-version-file: .python-version
-
       - name: install-uv
         uses: astral-sh/setup-uv@v3
 
-      - name: install-dependencies
-        run: uv sync --group lint
-
       - name: run-linters
         run: |
+          uv sync --group lint
           uv run ruff format --check
           uv run ruff check
           uv run mypy
@@ -40,16 +27,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: install-python
-        uses: actions/setup-python@v4
-        with:
-          python-version-file: .python-version
-
       - name: install-uv
         uses: astral-sh/setup-uv@v3
 
-      - name: install-dependencies
-        run: uv sync --group test
-
       - name: run-tests
-        run: uv run pytest --no-cov
+        run: |
+          uv sync --group test
+          uv run pytest --no-cov

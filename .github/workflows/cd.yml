@@ -1,0 +1,74 @@
+name: cd
+
+on: workflow_dispatch
+
+jobs:
+  bump:
+    name: bump-version
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.BUMP_APP_ID }}
+          private-key: ${{ secrets.BUMP_APP_SECRET }}
+
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: install-uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: bump-version
+        run: |
+          uv sync --frozen --group bump
+          git config user.name "${{ vars.BUMP_APP_USER_NAME }}"
+          git config user.email "${{ vars.BUMP_APP_USER_EMAIL }}"
+          git checkout main
+          uv run cz bump --annotated-tag --yes
+          git push --follow-tags
+
+  docs:
+    name: deploy-docs
+    permissions:
+      contents: write
+    needs: bump
+    runs-on: ubuntu-latest
+    env:
+      COVERAGE_BADGE: docs/reports/coverage/badge.svg
+      COVERAGE_HTML: docs/reports/coverage/
+      COVERAGE_XML: docs/reports/coverage/results.xml
+      TESTS_BADGE: docs/reports/tests/badge.svg
+      TESTS_HTML: docs/reports/tests/report.html
+      TESTS_XML: docs/reports/tests/results.xml
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.BUMP_APP_ID }}
+          private-key: ${{ secrets.BUMP_APP_SECRET }}
+
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: install-uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: deploy-docs
+        run: |
+          uv sync --frozen --group docs
+          uv run pytest --junitxml="$TESTS_XML" --html="$TESTS_HTML"
+          uv run coverage xml -o "$COVERAGE_XML"
+          uv run coverage html --directory "$COVERAGE_HTML"
+          uv run genbadge tests --input-file "$TESTS_XML" --output-file "$TESTS_BADGE"
+          uv run genbadge coverage --input-file "$COVERAGE_XML" --output-file "$COVERAGE_BADGE"
+          uv run mkdocs build
+          uv run mkdocs gh-deploy
