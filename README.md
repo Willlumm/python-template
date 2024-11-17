@@ -4,10 +4,10 @@ A template for Python projects.
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![mypy: checked](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
-![Tests Status](./reports/tests/badge.svg?dummy=8484744)
-![Coverage Status](./reports/coverage/badge.svg?dummy=8484744)
-[![ci](https://github.com/Willlumm/python-template/actions/workflows/ci.yml/badge.svg)](https://github.com/Willlumm/python-template/actions/workflows/ci.yml)
+[![mypy: checked](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org)
+[![ci](https://github.com/Willlumm/python-template/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/Willlumm/python-template/actions/workflows/ci.yml)
+[![Tests Status](https://willlumm.github.io/python-template/reports/tests/badge.svg?dummy=8484744)](https://willlumm.github.io/python-template/reports/tests/report)
+[![Coverage Status](https://willlumm.github.io/python-template/reports/coverage/badge.svg?dummy=8484744)](https://willlumm.github.io/python-template/reports/coverage)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
