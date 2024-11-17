@@ -4,21 +4,21 @@ These are all just ideas, nothing is guaranteed to be added.
 
 ## CI/CD
 - Pre-commit
-- Allow bump PR to trigger CI
 - Format coverage badge
 - Create release
+- uv install to system python
 
 ## Documentation
 - Contributing
 - GitHub Pages
-    - Publish test results
-    - Publish documentation
-
-## Tests
-- Coveralls
+    - Style
+    - Include reports in index
+    - Docs from docstrings
+- Rewrite README
 
 ## Code
 - Full Sourcery review
-- Docstrings
 
+## Misc
 - Professionalize profile
+- Commit signing
