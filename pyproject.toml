@@ -11,10 +11,8 @@ bump = [
     "commitizen>=3.30.1",
 ]
 docs = [
-    {include-group = "test"},
-    "mkdocs>=1.6.1",
     "genbadge[coverage,tests]>=1.1.1",
-    "pytest-html>=4.1.1",
+    "mkdocs>=1.6.1",
     "mkdocs-material>=9.5.44",
 ]
 lint = [
