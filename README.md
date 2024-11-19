@@ -6,8 +6,8 @@ A template for Python projects.
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![mypy: checked](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org)
 [![ci](https://github.com/Willlumm/python-template/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/Willlumm/python-template/actions/workflows/ci.yml)
-[![Tests Status](https://willlumm.github.io/python-template/reports/tests.svg?dummy=8484744)](https://willlumm.github.io/python-template/reports/test-coverage.md)
-[![Coverage Status](https://willlumm.github.io/python-template/reports/test-coverage.svg?dummy=8484744)](https://willlumm.github.io/python-template/reports/test-coverage.md)
+[![Tests Status](https://willlumm.github.io/python-template/reports/tests.svg?dummy=8484744)](https://willlumm.github.io/python-template/reports/test-coverage)
+[![Coverage Status](https://willlumm.github.io/python-template/reports/test-coverage.svg?dummy=8484744)](https://willlumm.github.io/python-template/reports/test-coverage)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
