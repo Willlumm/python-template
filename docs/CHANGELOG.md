@@ -1,3 +1,9 @@
+## 0.3.0 (2024-11-19)
+
+### Feat
+
+- test coverage report in documentation (#45)
+
 ## 0.2.1 (2024-11-17)
 
 ### Fix
