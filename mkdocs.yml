@@ -7,8 +7,7 @@ nav:
   - Index: index.md
   - Changelog: CHANGELOG.md
   - Reports:
-    - Tests: reports/tests/report.html
-    - Coverage: reports/coverage/index.html
+    - Test Coverage: reports/test-coverage.md
 theme:
   name: material
   locale: en

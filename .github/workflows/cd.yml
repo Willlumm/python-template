@@ -31,12 +31,11 @@ jobs:
     needs: bump
     runs-on: ubuntu-latest
     env:
-      COVERAGE_BADGE: docs/reports/coverage/badge.svg
-      COVERAGE_HTML: docs/reports/coverage/
-      COVERAGE_XML: docs/reports/coverage/results.xml
-      TESTS_BADGE: docs/reports/tests/badge.svg
-      TESTS_HTML: docs/reports/tests/report.html
-      TESTS_XML: docs/reports/tests/results.xml
+      COVERAGE_BADGE: docs/reports/test-coverage.svg
+      COVERAGE_MD: docs/reports/test-coverage.md
+      COVERAGE_XML: docs/reports/test-coverage.xml
+      TESTS_BADGE: docs/reports/tests.svg
+      TESTS_XML: docs/reports/tests.xml
     steps:
       - uses: actions/create-github-app-token@v1
         id: app-token
@@ -49,10 +48,10 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
       - uses: astral-sh/setup-uv@v3
       - run: |
-          uv sync --frozen --group docs
-          uv run pytest --junitxml="$TESTS_XML" --html="$TESTS_HTML"
+          uv sync --frozen --group docs --group test
+          uv run pytest --junitxml="$TESTS_XML"
           uv run coverage xml -o "$COVERAGE_XML"
-          uv run coverage html --directory "$COVERAGE_HTML"
+          uv run coverage report --format=markdown > "$COVERAGE_MD"
           uv run genbadge tests --input-file "$TESTS_XML" --output-file "$TESTS_BADGE"
           uv run genbadge coverage --input-file "$COVERAGE_XML" --output-file "$COVERAGE_BADGE"
           uv run mkdocs build
